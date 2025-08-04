@@ -1,0 +1,144 @@
+html, body {
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+/* Display */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url("bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    background-color: #FFFDF6;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+h1 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Status display */
+.status {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #555;
+    min-height: 1.5em;
+}
+
+/* Game board styles */
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    margin-bottom: 15px;
+}
+
+.cell {
+    font-family: "Permanent Marker", cursive;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #FFFA8D;
+    border-radius: 6px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.cell.x{
+    color: red !important;
+}
+.cell.o{
+    color: green !important;
+}
+
+.cell:hover {
+    background-color: #cbd6e8;
+}
+
+.cell.disabled {
+    cursor: default;
+    background-color: #f5f7fa;
+    color: #999;
+}
+
+.img {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 445px;
+    height: 470px;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    pointer-events: none;
+}
+.img img {
+    width: 100%;
+    height: 90%;
+    object-fit: contain;
+}
+/* Reset button */
+#reset-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#reset-button:hover {
+    background-color: #0056b3;
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.cell.x,
+.cell.o {
+    animation: pulse 0.3s ease;
+}
+@keyframes flash {
+    0%, 100% { background-color: #AFE5FE; }
+    50% { background-color: #99FEB9; }
+}
+
+.cell.flash {
+    animation: flash 0.6s ease-in-out infinite; 
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .cell {
+        height: 80px;
+        font-size: 2.5rem;
+        font-family: "Permanent Marker", cursive;
+    }
+
+    .container {
+        padding: 15px;
+    }
+}
